@@ -12,7 +12,8 @@ def shrani(url, ime_dat):
         print("Shranjeno: ", url)
 
 def zajemi_naslove():
-    glavni_url = 'http://okusno.je/recepti/#/recepti/page:'
+    #glavni_url = 'http://okusno.je/recepti/#/recepti/page:'
+    glavni_url = 'http://okusno.je/lbin/ajax_okusno_search.php?tab_clicked=true&search=/recepti/page:'
     f = open('url-naslovi-strani-receptov.txt' , 'w')
     rel_urls = re.compile(r'recipe-item" href=(".*")')
     for i in range(1, 100):
