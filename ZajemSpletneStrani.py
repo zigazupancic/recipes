@@ -25,4 +25,35 @@ def zajemi_naslove():
         #print(i, naslovi)
         print(url)
 
+def zajemi_podatke(url_recept):
+    url = 'http://okusno.je' + url_recept
+    r = requests.get(url)
+    regex_naslov = re.compile(r'<h2.*">(.*)<')
+    regex_gl_sest = re.compile(r'main_ing.*">(.*)<')
+    regex_sestavine = re.compile(r'rel=.*?><\/div>\s*?<label>\s*(.*)\s*.*\s*.*\s*.*?>(.*)<')
+    regex_tezavnost = re.compile(r'cook-diff.*?(\d)')
+    regex_cas_priprave = re.compile(r'cook-sum-time.*\s*.*\s*.*\s*.*\s*.*\s*(.*)')
+    # TO DO regex_navodila_recept = re.compile()
+
+    podatki = dict()
+    podatki['ime_recepta'] = list(re.findall(regex_naslov, r.text))
+    podatki['glavne_sestavine'] = list(re.findall(regex_gl_sest, r.text))
+    podatki['sestavine'] = list(re.findall(regex_sestavine, r.text))
+    podatki['tezavnost'] = list(re.findall(regex_tezavnost, r.text))
+    podatki['cas_priprave'] = list(re.findall(regex_cas_priprave, r.text))
+    return podatki
+
+def naredi_csv():
+    id_n = 1
+    glavni_podatki_o_receptu = open('glavni_recepti.txt', 'w')
+    recepti_sestavine = open('recepti-sestavine.txt', 'w')
+    urls = open('url-naslovi-strani-receptov.txt', 'r')
+    for url_naslov in urls:
+        url_naslov = url_naslov.strip().strip('"')
+        podatki = zajemi_podatke(url_naslov)
+        print(id_n, podatki)
+        id_n += 1
+
+a = zajemi_podatke('/recept/rizevi-rezanci-s-svinjino-in-zelenjavo')
+
     
