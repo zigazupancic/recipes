@@ -1,0 +1,52 @@
+{% extends "getrecipe/base.html" %}
+
+{% block title %}
+IME
+{% endblock %}
+
+<style type="text/css">
+   body { background: navy !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+{% block content %}
+<div class="jumbotron text-center">
+  <h1>Recepti</h1>
+  <p>Vpiši svoje sestavine in izvedel boš, kaj lahko skuhaš</p>
+  <form>
+    <div class="input-group">
+      <input type="text" class="form-control" size="50" placeholder="Sestavine" required>
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-danger">Najdi</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+    <div id="about" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>KAKO ISKATI</h2><br>
+      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-cutlery logo"></span>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-grey">
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-apple logo slideanim"></span>
+    </div>
+    <div class="col-sm-8">
+      <h2>Our Values</h2><br>
+      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

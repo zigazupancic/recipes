@@ -1,5 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 
 def index(request):
-    return HttpResponse("<h1>Začetna stran</h1>")
-
+    return render(request, 'getrecipe/index.html', {'ime': "Uporabnik"})
