@@ -2,7 +2,14 @@ import requests, re, os
 
 prevedi = { 'Å¾' : 'ž',
            'Ä\x8d' : 'č',
-           'Å¡' : 'š'}
+           'Å¡' : 'š',
+            'Å\xa0' : 'Š',
+            'Ä\x8c' : 'Č',
+            'Ã¶' : 'ö',
+            'Å½' : 'Ž',
+            'Ã¨' : 'è',
+            'Ã»' : 'û',
+            'Ã©' : 'é'}
 
 def shrani(url, ime_dat):
     r = requests.get(url)
@@ -52,17 +59,44 @@ def zajemi_podatke(url_recept):
     return podatki
 
 def naredi_csv():
-    id_n = 1
+    
     glavni_podatki_o_receptu = open('glavni_recepti.txt', 'w')
+    glavni_podatki_o_receptu.write('id, ime sestavine, tezavnost, cas_priprave \n')
+    
     recepti_sestavine = open('recepti-sestavine.txt', 'w')
+    recepti_sestavine.write('recept, sestavina, količina \n')
     urls = open('url-naslovi-strani-receptov.txt', 'r')
+
+    ID = 1
     for url_naslov in urls:
-        url_naslov = url_naslov.strip().strip('"')
-        podatki = zajemi_podatke(url_naslov)
-        print(id_n, podatki)
-        id_n += 1
+        try:
+            url_naslov = url_naslov.strip().strip('"')
+            podatki = zajemi_podatke(url_naslov)
+            
+            #Glavni podatki o receptu
+            ime_recepta = podatki['ime_recepta'][0]
+            tezavnost = podatki['tezavnost'][0]
+            cas_priprave = podatki['cas_priprave'][0]
+            line = '{0}, {1}, {2}, {3}, \n'.format(ID, ime_recepta, tezavnost, cas_priprave)
+            glavni_podatki_o_receptu.write(line)
+
+            #Sestavine - zaenkrat dodamo samo vse sestavine
+            for kolicina, sestavina in podatki['sestavine']:
+                k = kolicina
+                if 'label' in k:
+                    k = ''
+                line = '{0}, {1}, {2}, \n'.format(ime_recepta, sestavina, k)
+                recepti_sestavine.write(line)
+            ID += 1
+            print(ID, ime_recepta)
+        except:
+            print(podatki)
+            print('ERROR : ###################################')
+    
+    glavni_podatki_o_receptu.close()
+    recepti_sestavine.close()
 
 a = zajemi_podatke('/recept/rizevi-rezanci-s-svinjino-in-zelenjavo')
 print(a)
-
+naredi_csv()
     
