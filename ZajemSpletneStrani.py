@@ -1,5 +1,9 @@
 import requests, re, os
 
+prevedi = { 'Å¾' : 'ž',
+           'Ä\x8d' : 'č',
+           'Å¡' : 'š'}
+
 def shrani(url, ime_dat):
     r = requests.get(url)
     lokacija = os.getcwd()
@@ -35,12 +39,16 @@ def zajemi_podatke(url_recept):
     regex_cas_priprave = re.compile(r'cook-sum-time.*\s*.*\s*.*\s*.*\s*.*\s*(.*)')
     # TO DO regex_navodila_recept = re.compile()
 
+    tekst = r.text
+    for crka, prevod in prevedi.items():
+        tekst = tekst.replace(crka, prevod)
+
     podatki = dict()
-    podatki['ime_recepta'] = list(re.findall(regex_naslov, r.text))
-    podatki['glavne_sestavine'] = list(re.findall(regex_gl_sest, r.text))
-    podatki['sestavine'] = list(re.findall(regex_sestavine, r.text))
-    podatki['tezavnost'] = list(re.findall(regex_tezavnost, r.text))
-    podatki['cas_priprave'] = list(re.findall(regex_cas_priprave, r.text))
+    podatki['ime_recepta'] = list(re.findall(regex_naslov, tekst))
+    podatki['glavne_sestavine'] = list(re.findall(regex_gl_sest, tekst))
+    podatki['sestavine'] = list(re.findall(regex_sestavine, tekst))
+    podatki['tezavnost'] = list(re.findall(regex_tezavnost, tekst))
+    podatki['cas_priprave'] = list(re.findall(regex_cas_priprave, tekst))
     return podatki
 
 def naredi_csv():
@@ -55,5 +63,6 @@ def naredi_csv():
         id_n += 1
 
 a = zajemi_podatke('/recept/rizevi-rezanci-s-svinjino-in-zelenjavo')
+print(a)
 
     
