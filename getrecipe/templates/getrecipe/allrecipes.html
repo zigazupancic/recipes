@@ -1,0 +1,21 @@
+{% extends "getrecipe/base.html" %}
+
+{% block title %}
+    Recepti
+{% endblock %}
+
+<style type="text/css">
+    body { background: navy !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+{% block content %}
+    <div class="jumbotron">
+        <h1>Vsi recepti</h1>
+        {% for recept in recepti %}
+            <h3>
+                <a href="{% url 'detail' recept.id %}">{{ recept.ime }}</a>
+            </h3>
+        {% endfor %}
+    </div>
+
+{% endblock %}
