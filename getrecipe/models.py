@@ -1,6 +1,7 @@
 from django.db import models
 from django.core import validators
 
+
 class Sestavina(models.Model):
     ime = models.CharField(max_length=30)
 
@@ -25,7 +26,7 @@ class Recept(models.Model):
 
 
 class Priprava(models.Model):
-    kolicina = models.FloatField
+    kolicina = models.FloatField()
     mera = models.ForeignKey(Mera, on_delete=models.CASCADE)
     sestavina = models.ForeignKey(Sestavina, on_delete=models.CASCADE)
     recept = models.ForeignKey(Recept, on_delete=models.CASCADE)
