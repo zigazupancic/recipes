@@ -1,0 +1,30 @@
+{% extends "getrecipe/base.html" %}
+
+{% block title %}
+Recepti - {{ recept.ime }}
+{% endblock %}
+
+<style type="text/css">
+   body { background: navy !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+{% block content %}
+   <div class="jumbotron">
+  <h1>{{ recept.ime }}</h1>
+       <p>Zahtevnost: {{ recept.zahtevnost }}</p>
+       <p>Čas priprave: {{ recept.cas_priprave }}</p>
+       <p>Ocena: {{ recept.ocena }}</p>
+       <p>Sestavine:
+           {% for s in recept.priprava_set.all %}
+       <ul>
+       <li>
+           {{ s.sestavina.ime }},
+           kolicina: {{ s.kolicina }} {{ s.mera.ime }}
+       </li>
+       </ul>
+       {% endfor %}
+       </p>
+       <b>Postopek priprave</b>: {{ recept.postopek }}
+</div>
+
+{% endblock %}
