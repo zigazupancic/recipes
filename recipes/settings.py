@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'recipes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'recipes',
-        'USER': 'recipesuser',
-        'PASSWORD': 'recipespass',
-        'HOST': 'localhost',
+        'NAME': 'sem2017_zigaz',
+        'USER': 'javnost',
+        'PASSWORD': 'javnogeslo',
+        'HOST': 'baza.fmf.uni-lj.si',
         'PORT': '5432',
     }
 }
