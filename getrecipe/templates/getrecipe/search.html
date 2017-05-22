@@ -1,0 +1,22 @@
+{% extends "getrecipe/base.html" %}
+
+{% block title %}
+    Recepti
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+        Izberi sestavine, ki so ti na voljo:
+        <form action="{% url 'search' %}" method="post">
+            {% csrf_token %}
+            <h1></h1>
+            {{ form }}
+            <input type="submit" value="Išči" />
+        </form>
+
+    </div>
+
+
+{% endblock %}
