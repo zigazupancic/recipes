@@ -69,6 +69,8 @@ def naredi_csv():
 
     ID = 1
     for url_naslov in urls:
+        if ID > 10:
+            break
         try:
             url_naslov = url_naslov.strip().strip('"')
             podatki = zajemi_podatke(url_naslov)
@@ -77,7 +79,7 @@ def naredi_csv():
             ime_recepta = podatki['ime_recepta'][0]
             tezavnost = podatki['tezavnost'][0]
             cas_priprave = podatki['cas_priprave'][0]
-            line = '{0}, {1}, {2}, {3}, \n'.format(ID, ime_recepta, tezavnost, cas_priprave)
+            line = '{0}, {1}, {2}, \n'.format(ime_recepta, tezavnost, cas_priprave)
             glavni_podatki_o_receptu.write(line)
 
             #Sestavine - zaenkrat dodamo samo vse sestavine
