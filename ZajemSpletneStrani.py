@@ -80,7 +80,6 @@ def naredi_csv():
             tezavnost = podatki['tezavnost'][0]
             cas_priprave = podatki['cas_priprave'][0]
             line = '{0}, {1}, {2} \n'.format(ime_recepta, tezavnost, cas_priprave)
-            line = '{0}, {1}, {2}, \n'.format(ime_recepta, tezavnost, cas_priprave)
             glavni_podatki_o_receptu.write(line)
 
             #Sestavine - zaenkrat dodamo samo vse sestavine
@@ -89,7 +88,6 @@ def naredi_csv():
                 if 'label' in k:
                     k = ''
                 line = '{0}, {1}, {2} \n'.format(ime_recepta, sestavina, k)
-                line = '{0}, {1}, {2}, \n'.format(ime_recepta, sestavina, k)
                 recepti_sestavine.write(line)
             ID += 1
             print(ID, ime_recepta)
