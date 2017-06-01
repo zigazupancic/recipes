@@ -23,13 +23,20 @@ def search(request):
         form = IngredientsForm(request.POST)
         if form.is_valid():
             ingredients = form.cleaned_data['ingredients']
-            # Vrne ID-je receptov, ki vsebujejo vse sestavine iz `ingredients` ali eno manj (najprej vrne tiste ki
-            # vsebujejo vse sestavine).
-            recipes = (Priprava.objects
-                       .filter(sestavina_id__in=ingredients)
-                       .values('recept_id')
-                       .annotate(sestavine_count=Count('sestavina_id'))
-                       .filter(sestavine_count__gte=len(ingredients) - 1))
+            if form.cleaned_data['search_type'] == 's_in_r':
+                # Vrne ID-je receptov, ki vsebujejo vse sestavine iz `ingredients`.
+                recipes = (Priprava.objects
+                           .filter(sestavina_id__in=ingredients)
+                           .values('recept_id')
+                           .annotate(sestavine_count=Count('sestavina_id'))
+                           .filter(sestavine_count=len(ingredients)))
+            else:
+                # Vrne ID-je receptov, katerih vse sestavine so vsebovane v `ingredients`.
+                exclude_recipes = (Priprava.objects.exclude(sestavina_id__in=ingredients)
+                                   .values('recept_id')
+                                   .distinct())
+                recipes = (Recept.objects.exclude(id__in=exclude_recipes)
+                           .extra(select={'recept_id': 'id'}).values('recept_id'))
             sestavine = Sestavina.objects.filter(id__in=ingredients)
             recepti = Recept.objects.filter(id__in=[r['recept_id'] for r in recipes])
             return render(request, 'getrecipe/search_result.html', {'sestavine': sestavine, 'recepti': recepti})

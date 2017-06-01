@@ -60,24 +60,26 @@ def zajemi_podatke(url_recept):
 
 def naredi_csv():
     
-    glavni_podatki_o_receptu = open('glavni_recepti.txt', 'w')
-    glavni_podatki_o_receptu.write('id, ime sestavine, tezavnost, cas_priprave \n')
+    glavni_podatki_o_receptu = open('glavni_recepti.csv', 'w')
+    glavni_podatki_o_receptu.write('ime recepta, tezavnost, cas_priprave \n')
     
-    recepti_sestavine = open('recepti-sestavine.txt', 'w')
+    recepti_sestavine = open('recepti-sestavine.csv', 'w')
     recepti_sestavine.write('recept, sestavina, količina \n')
     urls = open('url-naslovi-strani-receptov.txt', 'r')
 
     ID = 1
     for url_naslov in urls:
+        if ID > 10:
+            break
         try:
             url_naslov = url_naslov.strip().strip('"')
             podatki = zajemi_podatke(url_naslov)
             
             #Glavni podatki o receptu
-            ime_recepta = podatki['ime_recepta'][0]
+            ime_recepta = podatki['ime_recepta'][0].replace(',', '')
             tezavnost = podatki['tezavnost'][0]
             cas_priprave = podatki['cas_priprave'][0]
-            line = '{0}, {1}, {2}, {3}, \n'.format(ID, ime_recepta, tezavnost, cas_priprave)
+            line = '{0}, {1}, {2} \n'.format(ime_recepta, tezavnost, cas_priprave)
             glavni_podatki_o_receptu.write(line)
 
             #Sestavine - zaenkrat dodamo samo vse sestavine
@@ -85,7 +87,7 @@ def naredi_csv():
                 k = kolicina
                 if 'label' in k:
                     k = ''
-                line = '{0}, {1}, {2}, \n'.format(ime_recepta, sestavina, k)
+                line = '{0}, {1}, {2} \n'.format(ime_recepta, sestavina, k)
                 recepti_sestavine.write(line)
             ID += 1
             print(ID, ime_recepta)
