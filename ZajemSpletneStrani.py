@@ -61,10 +61,10 @@ def zajemi_podatke(url_recept):
 def naredi_csv():
     
     glavni_podatki_o_receptu = open('glavni_recepti.csv', 'w')
-    glavni_podatki_o_receptu.write('id, ime sestavine, tezavnost, cas_priprave \n')
+    glavni_podatki_o_receptu.write('id; ime sestavine; tezavnost; cas_priprave \n')
     
     recepti_sestavine = open('recepti-sestavine.csv', 'w')
-    recepti_sestavine.write('recept, sestavina, količina \n')
+    recepti_sestavine.write('recept; sestavina; količina \n')
     urls = open('url-naslovi-strani-receptov.txt', 'r')
 
     ID = 1
