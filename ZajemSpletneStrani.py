@@ -76,7 +76,7 @@ def naredi_csv():
             podatki = zajemi_podatke(url_naslov)
             
             #Glavni podatki o receptu
-            ime_recepta = podatki['ime_recepta'][0]
+            ime_recepta = podatki['ime_recepta'][0].replace(',', '')
             tezavnost = podatki['tezavnost'][0]
             cas_priprave = podatki['cas_priprave'][0]
             line = '{0}; {1}; {2}; \n'.format(ime_recepta, tezavnost, cas_priprave)
