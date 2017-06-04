@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Django default" uuid="18c2128c-7a42-43a1-8c4e-3d7441866798">
+      <database-info product="PostgreSQL" version="9.6.2" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>recipesuser</user-name>
+      <introspection-schemas>recipes:public</introspection-schemas>
+      <resolve-scope>recipes:public,recipesuser</resolve-scope>
+      <unqualified-resolve-schemas>recipes:public,recipesuser</unqualified-resolve-schemas>
+    </data-source>
+    <data-source name="recipes@localhost" uuid="d323e522-90e4-4915-a690-08dda0dcf928">
+      <database-info product="PostgreSQL" version="9.5.6" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>recipesuser</user-name>
+      <introspection-schemas>recipes:public</introspection-schemas>
+    </data-source>
+  </component>
+</project>
