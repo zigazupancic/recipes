@@ -11,20 +11,19 @@ Recepti - {{ recept.ime }}
 {% block content %}
    <div class="jumbotron">
   <h1>{{ recept.ime }}</h1>
-       <p>Zahtevnost: {{ recept.zahtevnost }}</p>
-       <p>Čas priprave: {{ recept.cas_priprave }}</p>
-       <p>Ocena: {{ recept.ocena }}</p>
-       <p>Sestavine:
+       <p>Zahtevnost: {{ recept.zahtevnost }} / 3</p>
+       <p>Čas priprave: {{ recept.cas_priprave }} min</p>
+       <p>Ocena: {{ recept.ocena }} / 5</p>
+       <p><b>Sestavine:</b>
            {% for s in recept.priprava_set.all %}
        <ul>
        <li>
-           {{ s.sestavina.ime }},
-           kolicina: {{ s.kolicina }} {{ s.mera.ime }}
+           <i>{{ s.kolicina }} {{ s.mera.ime }}</i> ... {{ s.sestavina.ime }}   
        </li>
        </ul>
        {% endfor %}
        </p>
-       <b>Postopek priprave</b>: {{ recept.postopek }}
+       <b>Postopek priprave:</b> {{ recept.postopek }}
 </div>
 
 {% endblock %}

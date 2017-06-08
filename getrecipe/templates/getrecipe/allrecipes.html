@@ -5,15 +5,30 @@
 {% endblock %}
 
 <style type="text/css">
-    body { background: navy !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+    body { background: navy !important;} /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 </style>
 
+
+
+
 {% block content %}
+
     <div class="jumbotron">
+        <style>
+            a:link {
+                color: white;
+            }
+            a:visited {
+                color: yellow;
+            }
+        </style>
         <h1>Vsi recepti</h1>
+        Tu je seznam vseh receptov, med katerimi lahko izbiraš.
         {% for recept in recepti %}
             <h3>
+                <body link="white">
                 <a href="{% url 'detail' recept.id %}">{{ recept.ime }}</a>
+                </body>
             </h3>
         {% endfor %}
     </div>
