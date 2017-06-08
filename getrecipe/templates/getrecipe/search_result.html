@@ -20,9 +20,15 @@
         </style>
         <h1>Rezultati iskanja receptov po sestavinah</h1>
         <p>S pomočjo izbranih sestavin</p>
-        <p>{% for sestavina in sestavine %}
-            {{ sestavina.ime }},
-        {%  endfor %}</p>
+        
+        <ul>
+            {% for sestavina in sestavine %}
+            <li>
+                <i> {{sestavina.ime}},</i>
+            </li>
+            {% endfor %}
+        </ul>
+
         <p>lahko pripravimo naslednje recepte:</p>
         {% for recept in recepti %}
             <h3>
