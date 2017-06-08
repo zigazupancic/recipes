@@ -28,11 +28,12 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 {% block navigation %}
-                <li><a href="#about">O STRANI</a></li>
                 <li><a href="{% url 'search' %}">IŠČI RECEPTE</a></li>
                 <li><a href="{% url 'all_recipes' %}">VSI RECEPTI</a></li>
-                <li><a href="#section4">GUMB 4</a></li>
-                <li><a href="#section5">GUMB 5</a></li>
+                <li><a href="{% url 'publish' %}">DODAJ RECEPT</a></li>
+                <li><a href="{% url 'login' %}">PRIJAVA</a></li>
+                    <li><a href="{% url 'logout' %}">ODJAVA</a></li>
+                    <li><a href="{% url 'register' %}">REGISTRACIJA</a></li>
                 {% endblock %}
             </ul>
         </div>
