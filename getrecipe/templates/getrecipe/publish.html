@@ -1,0 +1,19 @@
+{% extends "getrecipe/base.html" %}
+
+{% block title %}
+    Recepti
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <form action="{% url 'publish' %}" method="post">
+            {% csrf_token %}
+            <h1>Dodaj recept</h1>
+            {{ form.as_p }}
+            <input type="submit" value="Dodaj" />
+        </form>
+
+    </div>
+
+{% endblock %}

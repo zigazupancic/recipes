@@ -1,0 +1,16 @@
+{% extends "getrecipe/base.html" %}
+
+{% block title %}
+    Recepti - registracija
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h1>Prijava</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+{% endblock %}

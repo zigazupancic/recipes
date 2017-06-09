@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from .models import Recept, Sestavina, Priprava
-from .forms import IngredientsForm
+from .forms import IngredientsForm, PublishRecipeForm
 from django.db.models import Count
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -37,9 +38,17 @@ def search(request):
                                    .distinct())
                 recipes = (Recept.objects.exclude(id__in=exclude_recipes)
                            .extra(select={'recept_id': 'id'}).values('recept_id'))
+                print(recipes.query)
             sestavine = Sestavina.objects.filter(id__in=ingredients)
             recepti = Recept.objects.filter(id__in=[r['recept_id'] for r in recipes])
             return render(request, 'getrecipe/search_result.html', {'sestavine': sestavine, 'recepti': recepti})
-    else:
-        form = IngredientsForm()
+    form = IngredientsForm()
     return render(request, 'getrecipe/search.html', {'form': form})
+
+
+@login_required()
+def publish(request):
+    if request.method == 'POST':
+        pass
+    form = PublishRecipeForm()
+    return render(request, 'getrecipe/publish.html', {'form': form})

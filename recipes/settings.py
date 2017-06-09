@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'getrecipe.apps.GetrecipeConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,8 +79,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'sem2017_zigaz',
-        'USER': 'samok',
-        'PASSWORD': 'epunr62j',
+        'USER': 'javnost',
+        'PASSWORD': 'javnogeslo',
         'HOST': 'baza.fmf.uni-lj.si',
         'PORT': '5432',
     }
@@ -123,3 +124,4 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = '/'
