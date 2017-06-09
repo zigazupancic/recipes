@@ -28,10 +28,10 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 {% block navigation %}
-                <li><a href="{% url 'search' %}">IŠČI RECEPTE</a></li>
-                <li><a href="{% url 'all_recipes' %}">VSI RECEPTI</a></li>
-                <li><a href="{% url 'publish' %}">DODAJ RECEPT</a></li>
-                <li><a href="{% url 'login' %}">PRIJAVA</a></li>
+                    <li><a href="{% url 'search' %}">IŠČI RECEPTE</a></li>
+                    <li><a href="{% url 'all_recipes' %}">VSI RECEPTI</a></li>
+                    <li><a href="{% url 'publish' %}">DODAJ RECEPT</a></li>
+                    <li><a href="{% url 'login' %}">PRIJAVA</a></li>
                     <li><a href="{% url 'logout' %}">ODJAVA</a></li>
                     <li><a href="{% url 'register' %}">REGISTRACIJA</a></li>
                 {% endblock %}
@@ -49,10 +49,10 @@
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
     {% block footer %}
-    <p>Uporabljene tehnologije:
-        <a href="https://www.djangoproject.com/" title="Djagno">Django</a> in
-        <a href="http://getbootstrap.com/", title="Bootstrap">Bootstrap</a>.
-    </p>
+        <p>Uporabljene tehnologije:
+            <a href="https://www.djangoproject.com/" title="Djagno">Django</a> in
+            <a href="http://getbootstrap.com/", title="Bootstrap">Bootstrap</a>.
+        </p>
     {% endblock %}
 </footer>
 
@@ -95,4 +95,3 @@
 
 </body>
 </html>
-

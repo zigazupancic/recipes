@@ -1,36 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-Registracija
-{{ error }}
-<form action="{% url 'register' %}" method = "POST">
-    {% csrf_token %}
+{% extends "getrecipe/base.html" %}
 
-    <p>
-    {{ form.username.label_tag }}
-    {{ form.username}}
-    </p>
+{% block title %}
+    Recepti - registracija
+{% endblock %}
 
-    <p>
-    {{ form.email.label_tag }}
-    {{ form.email }}
-    </p>
+{% block content %}
+    <div class="container-fluid">
+        <h1>Registracija</h1>
+        {{ error }}
+        <form action="{% url 'register' %}" method = "POST">
+            {% csrf_token %}
 
-    <p>
-    {{ form.password1.label_tag }}
-    {{ form.password1 }}
-    </p>
+            <p>
+                {{ form.username.label_tag }}
+                {{ form.username}}
+            </p>
 
-    <p>
-    {{ form.password2.label_tag }}
-    {{ form.password2 }}
-    </p>
+            <p>
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </p>
 
-    <input type = "submit" value = "register" />
-</form>
-</body>
-</html>
+            <p>
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+            </p>
+
+            <p>
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </p>
+
+            <input type = "submit" value = "register" />
+        </form>
+    </div>
+{% endblock %}
