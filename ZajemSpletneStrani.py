@@ -58,12 +58,13 @@ def zajemi_podatke(url_recept):
     podatki['tezavnost'] = list(re.findall(regex_tezavnost, tekst))
     podatki['cas_priprave'] = list(re.findall(regex_cas_priprave, tekst))
     podatki['url_slike'] = list(re.findall(regex_url_slike, tekst))
+    podatki['url'] = [url]
     return podatki
 
 def naredi_csv():
     
     glavni_podatki_o_receptu = open('glavni_recepti.csv', 'w')
-    glavni_podatki_o_receptu.write('ime recepta, tezavnost, cas_priprave, url_slike \n')
+    glavni_podatki_o_receptu.write('ime recepta, tezavnost, cas_priprave, url_slike, url_recepta \n')
     
     recepti_sestavine = open('recepti-sestavine.csv', 'w')
     recepti_sestavine.write('recept, sestavina, količina \n')
@@ -71,8 +72,8 @@ def naredi_csv():
 
     ID = 1
     for url_naslov in urls:
-        #if ID > 10:
-        #    break
+        if ID > 10:
+            break
         try:
             url_naslov = url_naslov.strip().strip('"')
             podatki = zajemi_podatke(url_naslov)
@@ -82,7 +83,8 @@ def naredi_csv():
             tezavnost = podatki['tezavnost'][0]
             cas_priprave = podatki['cas_priprave'][0]
             url_slike = podatki['url_slike'][0]
-            line = '{0}, {1}, {2}. {3} \n'.format(ime_recepta, tezavnost, cas_priprave, url_slike)
+            url_recepta = podatki['url'][0]
+            line = '{0}, {1}, {2}, {3}, {4} \n'.format(ime_recepta, tezavnost, cas_priprave, url_slike, url_recepta)
             glavni_podatki_o_receptu.write(line)
 
             #Sestavine - zaenkrat dodamo samo vse sestavine

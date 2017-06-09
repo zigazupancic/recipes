@@ -18,7 +18,7 @@ class Recept(models.Model):
     ime = models.CharField(max_length=50)
     ocena = models.FloatField(validators=[validators.MinValueValidator(0), validators.MaxValueValidator(10)])
     povezava = models.URLField(max_length=200)
-    povezava_do_slike_jedi = models.URLField(max_length=200, null=True)
+    #povezava_do_slike_jedi = models.URLField(max_length=200, null=True)
     zahtevnost = models.FloatField(validators=[validators.MinValueValidator(0), validators.MaxValueValidator(10)])
     cas_priprave = models.FloatField(validators=[validators.MinValueValidator(0)])
     postopek = models.TextField(max_length=10000)

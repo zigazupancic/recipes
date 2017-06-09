@@ -15,7 +15,7 @@ def detail(request, recipe_id):
 
 
 def all_recipes(request):
-    recipes = get_list_or_404(Recept)
+    recipes = get_list_or_404(Recept)   
     return render(request, 'getrecipe/allrecipes.html', {'recepti': recipes})
 
 

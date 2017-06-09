@@ -1,7 +1,7 @@
 {% extends "getrecipe/base.html" %}
 
 {% block title %}
-    Recepti
+    Rezultati iskanja
 {% endblock %}
 
 <style type="text/css">
@@ -10,12 +10,26 @@
 
 {% block content %}
     <div class="jumbotron">
-        <h1>Vsi recepti</h1>
-        S pomočjo
-        {% for sestavina in sestavine %}
-            {{ sestavina.ime }},
-        {%  endfor %}
-        lahko pripravimo:
+        <style>
+            a:link {
+                color: white;
+            }
+            a:visited {
+                color: yellow;
+            }
+        </style>
+        <h1>Rezultati iskanja receptov po sestavinah</h1>
+        <p>S pomočjo izbranih sestavin</p>
+        
+        <ul>
+            {% for sestavina in sestavine %}
+            <li>
+                <i> {{sestavina.ime}},</i>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <p>lahko pripravimo naslednje recepte:</p>
         {% for recept in recepti %}
             <h3>
                 <a href="{% url 'detail' recept.id %}">{{ recept.ime }}</a>
