@@ -8,7 +8,7 @@ Get recipe from available ingredients.
 
 ## Navodila za uporabo baze na FMF:
 * Server se zažene z ukazom `python3 manage.py runserver`, do aplikacije pa lahko dostopamo na
-[127.0.0.1:8000/getrecipe](http://127.0.0.1:8000/getrecipe).
+[127.0.0.1:8000/](http://127.0.0.1:8000/).
 
 ## Navodila za uporabo lokalne baze
 
@@ -26,4 +26,4 @@ exit
 ```
 
 * Server se zažene z ukazom `python3 manage.py runserver --settings=recipes.settings_local`, do aplikacije pa lahko dostopamo na
-[127.0.0.1:8000/getrecipe](http://127.0.0.1:8000/getrecipe).
+[127.0.0.1:8000/](http://127.0.0.1:8000/).
