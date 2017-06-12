@@ -4,7 +4,6 @@ from django.core import validators
 
 
 class IngredientsForm(forms.Form):
-    """
     available_ingredients = Sestavina.objects.all()
     choices = []
     for ingredient in available_ingredients:
@@ -12,9 +11,7 @@ class IngredientsForm(forms.Form):
     ingredients = forms.MultipleChoiceField(choices=choices)
     search_type = forms.ChoiceField(choices=[('s_in_r', 'Recept naj vsebuje vse iskane sestavine'),
                                              ('r_in_s', 'Sestavine recepta naj bodo vsebovane v iskanih sestavinah')])
-    """
 class PublishRecipeForm(forms.Form):
-    """
     available_ingredients = Sestavina.objects.all()
     ingredients_choices = []
     for ingredient in available_ingredients:
@@ -33,4 +30,3 @@ class PublishRecipeForm(forms.Form):
     postopek = forms.CharField(max_length=10000, required=True)
     tipi = forms.MultipleChoiceField(choices=types_of_food_choices, required=True)
     sestavine = forms.MultipleChoiceField(choices=ingredients_choices, required=True)
-    """
