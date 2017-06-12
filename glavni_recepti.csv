@@ -1,11 +1,11 @@
-ime recepta, tezavnost, cas_priprave, url_slike, url_recepta 
-Pišèanèja rulada z osoènikom in ostrigami ter smetanova omaka s pomaranèo, 2, 35 min, http://images.24ur.com/media/images/640x338/Apr2017/78babedacf_61912115.jpg, http://okusno.je/recept/piscancja-rulada-z-osocnikom-in-ostrigami-ter-smetanova-omaka-s-pomaranco 
-Losos s pirejem iz sladkega krompirja in špinaèno kremo, 1, 45 min, http://images.24ur.com/media/images/640x338/Apr2017/f3815e1e49_61912113.jpg, http://okusno.je/recept/losos-s-pirejem-iz-sladkega-krompirja-in-spinacno-kremo 
-Oslovo meso z ohrovtom in sirno omako, 1, 40 min, http://images.24ur.com/media/images/640x338/Apr2017/cb422d7475_61911766.jpg, http://okusno.je/recept/oslovo-meso-z-ohrovtom-in-sirno-omako 
-Oslovski medaljoni z buènim pirejem drobljencem in šalotkino omako, 1, 40 min, http://images.24ur.com/media/images/640x338/Apr2017/44364ade03_61911762.jpg, http://okusno.je/recept/oslovski-medaljoni-z-bucnim-pirejem-drobljencem-in-salotkino-omako 
-Sladko-kisli krokodilji chop suey, 1, 45 min, http://images.24ur.com/media/images/640x338/Apr2017/fefe5ea7d7_61911761.jpg, http://okusno.je/recept/sladko-kisli-krokodilji-chop-suey 
-Veganski piškoti s košèki èokolade, 1, 41 min, http://images.24ur.com/media/images/640x338/Apr2017/3fea1a7285_61909134.jpg, http://okusno.je/recept/veganski-cokoladni-piskoti 
-Matcha vaflji s presnim sladoledom, 1, 30 min, http://images.24ur.com/media/images/640x338/Apr2017/a3ccc1f99d_61908293.jpg, http://okusno.je/recept/matcha-vaflji-s-presnim-sladoledom 
-Kvinojina solatka, 1, 30 min, http://images.24ur.com/media/images/640x338/Mar2017/7c9b1e18d4_61904161.jpg, http://okusno.je/recept/kvinojina-solatka 
-Presna pita z jagodami, 1, 140 min, http://images.24ur.com/media/images/640x338/Mar2017/038519da7d_61902156.jpg, http://okusno.je/recept/presna-pita-z-jagodami 
-Falafel z jogurtovo omako s tahinijem, 1, 30 min, http://images.24ur.com/media/images/640x338/Mar2017/b8111644a1_61902081.jpg, http://okusno.je/recept/falafel-z-jogurtovo-omako-s-tahinijem 
+ime recepta, tezavnost, cas_priprave [min], url_slike, url_recepta 
+Pišèanèja rulada z osoènikom in ostrigami ter smetanova omaka s pomaranèo, 2, 35, http://images.24ur.com/media/images/640x338/Apr2017/78babedacf_61912115.jpg, http://okusno.je/recept/piscancja-rulada-z-osocnikom-in-ostrigami-ter-smetanova-omaka-s-pomaranco 
+Losos s pirejem iz sladkega krompirja in špinaèno kremo, 1, 45, http://images.24ur.com/media/images/640x338/Apr2017/f3815e1e49_61912113.jpg, http://okusno.je/recept/losos-s-pirejem-iz-sladkega-krompirja-in-spinacno-kremo 
+Oslovo meso z ohrovtom in sirno omako, 1, 40, http://images.24ur.com/media/images/640x338/Apr2017/cb422d7475_61911766.jpg, http://okusno.je/recept/oslovo-meso-z-ohrovtom-in-sirno-omako 
+Oslovski medaljoni z buènim pirejem drobljencem in šalotkino omako, 1, 40, http://images.24ur.com/media/images/640x338/Apr2017/44364ade03_61911762.jpg, http://okusno.je/recept/oslovski-medaljoni-z-bucnim-pirejem-drobljencem-in-salotkino-omako 
+Sladko-kisli krokodilji chop suey, 1, 45, http://images.24ur.com/media/images/640x338/Apr2017/fefe5ea7d7_61911761.jpg, http://okusno.je/recept/sladko-kisli-krokodilji-chop-suey 
+Veganski piškoti s košèki èokolade, 1, 41, http://images.24ur.com/media/images/640x338/Apr2017/3fea1a7285_61909134.jpg, http://okusno.je/recept/veganski-cokoladni-piskoti 
+Matcha vaflji s presnim sladoledom, 1, 30, http://images.24ur.com/media/images/640x338/Apr2017/a3ccc1f99d_61908293.jpg, http://okusno.je/recept/matcha-vaflji-s-presnim-sladoledom 
+Kvinojina solatka, 1, 30, http://images.24ur.com/media/images/640x338/Mar2017/7c9b1e18d4_61904161.jpg, http://okusno.je/recept/kvinojina-solatka 
+Presna pita z jagodami, 1, 140, http://images.24ur.com/media/images/640x338/Mar2017/038519da7d_61902156.jpg, http://okusno.je/recept/presna-pita-z-jagodami 
+Falafel z jogurtovo omako s tahinijem, 1, 30, http://images.24ur.com/media/images/640x338/Mar2017/b8111644a1_61902081.jpg, http://okusno.je/recept/falafel-z-jogurtovo-omako-s-tahinijem 
