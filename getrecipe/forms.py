@@ -12,8 +12,8 @@ class IngredientsForm(forms.Form):
     search_type = forms.ChoiceField(choices=[('s_in_r', 'Recept naj vsebuje vse iskane sestavine'),
                                              ('r_in_s', 'Sestavine recepta naj bodo vsebovane v iskanih sestavinah')])
 
-
 class PublishRecipeForm(forms.Form):
+
     available_ingredients = Sestavina.objects.all()
     ingredients_choices = []
     for ingredient in available_ingredients:

@@ -1,4 +1,5 @@
 import requests, re, os
+import csv
 
 prevedi = { 'Å¾' : 'ž',
            'Ä\x8d' : 'č',
@@ -117,14 +118,39 @@ def data():
 def naredi_csv():
     
     glavni_podatki_o_receptu = open('glavni_recepti.csv', 'w')
-    glavni_podatki_o_receptu.write('ime recepta, tezavnost, cas_priprave [min], url_slike, url_recepta \n')
+    #glavni_podatki_o_receptu.write('ime recepta, tezavnost, cas_priprave [min], url_slike, url_recepta \n')
     
     recepti_sestavine = open('recepti-sestavine.csv', 'w')
-    recepti_sestavine.write('recept, sestavina, količina \n')
-    urls = open('url-naslovi-strani-receptov.txt', 'r')
+    #recepti_sestavine.write('recept, sestavina, količina \n')
+
+    razne_mere = open('razne_mere.csv', 'w')
+
+    razne_sestavine = open('razne_sestavine.csv', 'w')
+    
+    glavni_podatki, recept, mere, sestavine = data()
+
+    writer1 = csv.writer(razne_sestavine)
+    for sest in sestavine:
+        writer1.writerow([sest])
+
+    writer2 = csv.writer(razne_mere)
+    for m in mere:
+        writer2.writerow([m])
+
+    writer3 = csv.writer(recepti_sestavine)
+    for vrstica in recept:
+        writer3.writerow(vrstica)
+
+    writer4 = csv.writer(glavni_podatki_o_receptu)
+    for vrstica in glavni_podatki:
+        writer4.writerow(vrstica)
+        
+
     
     glavni_podatki_o_receptu.close()
     recepti_sestavine.close()
+    razne_mere.close()
+    razne_sestavine.close()
 
 a = zajemi_podatke('/recept/rizevi-rezanci-s-svinjino-in-zelenjavo')
 print(a)
