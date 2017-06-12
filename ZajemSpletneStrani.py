@@ -88,7 +88,7 @@ def data():
             cas_priprave = podatki['cas_priprave'][0].split(' ')[0]
             url_slike = podatki['url_slike'][0]
             url_recepta = podatki['url'][0]
-            priprava = '\n'.join(podatki['navodila'])
+            priprava = ' '.join(podatki['navodila'])
             glavni_podatki.append([ime_recepta, tezavnost,cas_priprave,url_slike,url_recepta,priprava])
 
             #Sestavine
