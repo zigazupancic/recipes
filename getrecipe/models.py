@@ -3,15 +3,15 @@ from django.core import validators
 
 
 class Sestavina(models.Model):
-    ime = models.CharField(max_length=30)
+    ime = models.CharField(max_length=100)
 
 
 class Mera(models.Model):
-    ime = models.CharField(max_length=30)
+    ime = models.CharField(max_length=100)
 
 
 class TipJedi(models.Model):
-    ime = models.CharField(max_length=50)
+    ime = models.CharField(max_length=100)
 
 
 class Recept(models.Model):

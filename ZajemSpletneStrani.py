@@ -10,7 +10,11 @@ prevedi = { 'Å¾' : 'ž',
             'Å½' : 'Ž',
             'Ã¨' : 'è',
             'Ã»' : 'û',
-            'Ã©' : 'é'}
+            'Ã©' : 'é',
+            '&scaron;' : 'š',
+            '&nbsp;</p>' : '\n',
+            '&Scaron;' : 'Š',
+            }
 
 def shrani(url, ime_dat):
     r = requests.get(url)
@@ -75,9 +79,10 @@ def data():
     cnt = 0
     
     for url_naslov in urls:
+        print(cnt, url_naslov)
         cnt += 1
-        if cnt > 2:
-            break
+        #if cnt > 20:
+        #    break
         try:
             url_naslov = url_naslov.strip().strip('"')
             podatki = zajemi_podatke(url_naslov)
@@ -117,33 +122,45 @@ def data():
 
 def naredi_csv():
     
-    glavni_podatki_o_receptu = open('glavni_recepti.csv', 'w')
+    glavni_podatki_o_receptu = open('glavni_recepti.csv', 'w')#, encoding = 'utf-8')
     #glavni_podatki_o_receptu.write('ime recepta, tezavnost, cas_priprave [min], url_slike, url_recepta \n')
     
-    recepti_sestavine = open('recepti-sestavine.csv', 'w')
+    recepti_sestavine = open('recepti-sestavine.csv', 'w')#, encoding = 'utf-8')
     #recepti_sestavine.write('recept, sestavina, količina \n')
 
-    razne_mere = open('razne_mere.csv', 'w')
+    razne_mere = open('razne_mere.csv', 'w')#, encoding = 'utf-8')
 
-    razne_sestavine = open('razne_sestavine.csv', 'w')
+    razne_sestavine = open('razne_sestavine.csv', 'w')#, encoding = 'utf-8')
     
     glavni_podatki, recept, mere, sestavine = data()
 
     writer1 = csv.writer(razne_sestavine)
     for sest in sestavine:
-        writer1.writerow([sest])
+        try:
+            writer1.writerow([sest])
+        except:
+            continue
 
     writer2 = csv.writer(razne_mere)
     for m in mere:
-        writer2.writerow([m])
+        try:
+            writer2.writerow([m])
+        except:
+            continue
 
     writer3 = csv.writer(recepti_sestavine)
     for vrstica in recept:
-        writer3.writerow(vrstica)
+        try:
+            writer3.writerow(vrstica)
+        except:
+            continue
 
     writer4 = csv.writer(glavni_podatki_o_receptu)
     for vrstica in glavni_podatki:
-        writer4.writerow(vrstica)
+        try:
+            writer4.writerow(vrstica)
+        except:
+            continue
         
 
     
@@ -154,5 +171,5 @@ def naredi_csv():
 
 a = zajemi_podatke('/recept/rizevi-rezanci-s-svinjino-in-zelenjavo')
 print(a)
-#naredi_csv()
+naredi_csv()
     
