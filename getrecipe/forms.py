@@ -31,3 +31,4 @@ class PublishRecipeForm(forms.Form):
     postopek = forms.CharField(max_length=10000, required=True)
     tipi = forms.MultipleChoiceField(choices=types_of_food_choices, required=True)
     sestavine = forms.MultipleChoiceField(choices=ingredients_choices, required=True)
+
