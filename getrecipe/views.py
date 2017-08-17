@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    return render(request, 'getrecipe/index.html', {'ime': "Uporabnik"})
+    recipes = get_list_or_404(Recept)
+    return render(request, 'getrecipe/index.html', {'ime': "Uporabnik", 'recepti': recipes})
 
 
 def detail(request, recipe_id):
@@ -15,16 +16,19 @@ def detail(request, recipe_id):
 
 
 def all_recipes(request):
-    recipes = get_list_or_404(Recept)   
+    recipes = get_list_or_404(Recept)
     return render(request, 'getrecipe/allrecipes.html', {'recepti': recipes})
 
+def search_recipe(request):
+    # TODO
+    return render(request)
 
 def search(request):
     if request.method == 'POST':
         form = IngredientsForm(request.POST)
         if form.is_valid():
-            ingredients = form.cleaned_data['ingredients']
-            if form.cleaned_data['search_type'] == 's_in_r':
+            ingredients = form.cleaned_data['sestavine']
+            if form.cleaned_data['opcija_iskanja'] == 's_in_r':
                 # Vrne ID-je receptov, ki vsebujejo vse sestavine iz `ingredients`.
                 recipes = (Priprava.objects
                            .filter(sestavina_id__in=ingredients)
@@ -38,7 +42,6 @@ def search(request):
                                    .distinct())
                 recipes = (Recept.objects.exclude(id__in=exclude_recipes)
                            .extra(select={'recept_id': 'id'}).values('recept_id'))
-                print(recipes.query)
             sestavine = Sestavina.objects.filter(id__in=ingredients)
             recepti = Recept.objects.filter(id__in=[r['recept_id'] for r in recipes])
             return render(request, 'getrecipe/search_result.html', {'sestavine': sestavine, 'recepti': recepti})

@@ -10,21 +10,37 @@ Recepti - {{ recept.ime }}
 
 {% block content %}
    <div class="jumbotron">
-  <h1>{{ recept.ime }}</h1>
+   <h1>{{ recept.ime }}</h1>
      <center><img src="{{recept.povezava_do_slike_jedi}}"></center>
-       <p>Zahtevnost: {{ recept.zahtevnost }} / 3</p>
-       <p>Čas priprave: {{ recept.cas_priprave }} min</p>
-       <p>Ocena: {{ recept.ocena }} / 5</p>
-       <p><b>Sestavine:</b>
-           {% for s in recept.priprava_set.all %}
-       <ul>
-       <li>
-           <i>{{ s.kolicina }} {{ s.mera.ime }}</i> ... {{ s.sestavina.ime }}   
-       </li>
-       </ul>
-       {% endfor %}
+       <p>
+       <table>
+         <tr>
+           <td>Zahtevnost:</td>
+           <td>{{ recept.zahtevnost }} / 3</td>
+         </tr>
+         <tr>
+           <td>Čas priprave:&nbsp</td>
+           <td>{{ recept.cas_priprave }} min</td>
+         </tr>
+         <tr>
+           <td>Ocena:</td>
+           <td>{{ recept.ocena }} / 5</td>
+         </tr>
+       </table>
        </p>
-       <b>Postopek priprave:</b> {{ recept.postopek }}
+       <p><b>Sestavine:</b>
+           <table>
+              {% for s in recept.priprava_set.all %}
+                <tr>
+                    <td align="right">{{ s.kolicina }} {{ s.mera.ime }}</td>
+                    <td align="center">&nbsp...&nbsp</td>
+                    <td>{{ s.sestavina.ime }}</td>
+                </tr>
+              {% endfor %}
+           </table>
+       </p>
+       <p><b>Postopek priprave:</b>
+           <div align="justify">{{ recept.postopek }}</div></p>
 </div>
 
 {% endblock %}

@@ -1,6 +1,8 @@
 from django import forms
+#from chosen import forms as chosenforms
 from .models import Sestavina, TipJedi
 from django.core import validators
+
 
 
 class IngredientsForm(forms.Form):
@@ -8,8 +10,9 @@ class IngredientsForm(forms.Form):
     choices = []
     for ingredient in available_ingredients:
         choices.append((ingredient.id, ingredient.ime))
-    ingredients = forms.MultipleChoiceField(choices=choices)
-    search_type = forms.ChoiceField(choices=[('s_in_r', 'Recept naj vsebuje vse iskane sestavine'),
+    #sestavine = forms.ChosenMultipleChoiceField(choices=choices)
+    sestavine = forms.MultipleChoiceField(choices=choices)
+    opcija_iskanja = forms.ChoiceField(choices=[('s_in_r', 'Recept naj vsebuje vse iskane sestavine'),
                                              ('r_in_s', 'Sestavine recepta naj bodo vsebovane v iskanih sestavinah')])
 
 class PublishRecipeForm(forms.Form):
