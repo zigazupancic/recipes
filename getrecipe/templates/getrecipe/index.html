@@ -11,25 +11,20 @@
 {% block content %}
 <div class="jumbotron text-center">
   <h1>Recepti</h1>
-  <p>Vpiši svoje sestavine in izvedel boš, kaj lahko skuhaš.</p>
+  <p>Vpiši ime recepta, ki ga iščeš, ali pa svoje sestavine in izvedel boš, kaj lahko skuhaš.</p>
   <form>
     <div class="input-group">
-      <input type="text" class="form-control" size="50" placeholder="Recept" required>
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-danger">Najdi</button>
-      </div>
-    </div>
-
-
-    <div class="input-group">
-      <form type="get" action="." style="margin: 0">
-        <input type="text" class="form-control" size="50" placeholder="Recept" id="search_box" type="text" name="search_box" required>
-        <button id="search_submit" type="submit" style="color:#25b1ed">Najdi</button>
+      <form type="get" action="{% url 'index' %}" style="margin: 0" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="text" class="form-control" size="50" placeholder="Recept ali sestavina" id="search_box" name="search_box" required>
+        <div class="input-group-btn">
+            <button id="search_submit" type="submit" style="background-color:#25b1ed" class="btn btn-danger">Išči</button>
+        </div>
       </form>
     </div>
-
-
   </form>
+  <div>
     <br>
     <a href="{% url 'detail' 5991 %}"><img src="{{recepti.2.povezava_do_slike_jedi}}" height=100></a>
     <a href="{% url 'detail' 5996 %}"><img src="{{recepti.7.povezava_do_slike_jedi}}" height=100></a>
@@ -40,6 +35,7 @@
     <a href="{% url 'detail' 6024 %}"><img src="{{recepti.38.povezava_do_slike_jedi}}" height=100></a>
     <a href="{% url 'detail' 6036 %}"><img src="{{recepti.50.povezava_do_slike_jedi}}" height=100></a>
     <a href="{% url 'detail' 6042 %}"><img src="{{recepti.57.povezava_do_slike_jedi}}" height=100></a>
+  </div>
 </div>
 
 

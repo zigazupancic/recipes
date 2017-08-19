@@ -9,7 +9,7 @@
     <div class="jumbotron">
         <h1>Išči recepte</h1>
         <form>
-        Spodaj izberi sestavine, ki so ti na voljo. Lahko izbereš samo eno, ali pa se odločiš za več.
+        Spodaj izberi sestavine, ki so ti na voljo. Lahko izbereš samo eno ali pa se odločiš za več.
         <br>
         <i> Recept naj vsebuje vse iskane sestavine:</i> našel boš recepte, ki vsebujejo vse sestavine, ki si jih izbral. <br>
         <i> Sestavine recepta naj bodo vsebovane v iskanih sestavinah:</i> našel boš recepte, ki vsebujejo vsaj eno sestavino, ne pa nujno vseh, ki si jih izbral.
@@ -22,7 +22,6 @@
       <h4>
       <form action="{% url 'search' %}" method="post">
             {% csrf_token %}
-            <h1></h1>
             {{ form }}
             <div align="center">
                 <input type="submit" value="Išči"/>

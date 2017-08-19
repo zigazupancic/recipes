@@ -9,38 +9,55 @@ Recepti - {{ recept.ime }}
 </style>
 
 {% block content %}
-   <div class="jumbotron">
-   <h1>{{ recept.ime }}</h1>
-     <center><img src="{{recept.povezava_do_slike_jedi}}"></center>
-       <p>
-       <table>
-         <tr>
-           <td>Zahtevnost:</td>
-           <td>{{ recept.zahtevnost }} / 3</td>
-         </tr>
-         <tr>
-           <td>Čas priprave:&nbsp</td>
-           <td>{{ recept.cas_priprave }} min</td>
-         </tr>
-         <tr>
-           <td>Ocena:</td>
-           <td>{{ recept.ocena }} / 5</td>
-         </tr>
-       </table>
-       </p>
-       <p><b>Sestavine:</b>
-           <table>
-              {% for s in recept.priprava_set.all %}
-                <tr>
-                    <td align="right">{{ s.kolicina }} {{ s.mera.ime }}</td>
-                    <td align="center">&nbsp...&nbsp</td>
-                    <td>{{ s.sestavina.ime }}</td>
-                </tr>
-              {% endfor %}
-           </table>
-       </p>
-       <p><b>Postopek priprave:</b>
-           <div align="justify">{{ recept.postopek }}</div></p>
+<div class="jumbotron">
+    <h1>{{ recept.ime }}</h1>
+    <table style="width:100%">
+        <tr>
+            <td valign="bottom">
+                <table>
+                    <tr>
+                        <td>Zahtevnost:</td>
+                        <td>{{ recept.zahtevnost }} / 3</td>
+                    </tr>
+                    <tr>
+                        <td>Čas priprave:&nbsp</td>
+                        <td>{{ recept.cas_priprave }} min</td>
+                    </tr>
+                    <tr>
+                        <td>Ocena:</td>
+                        <td>{{ recept.ocena }} / 5</td>
+                    </tr>
+                </table>
+            </td>
+            <td><center>&nbsp<img src="{{recept.povezava_do_slike_jedi}}"></center></td>
+        </tr>
+    </table>
+</div>
+
+<div class="container-fluid">
+    <table>
+        <tr>
+            <td style="width:50%"><b>Sestavine:</b></td>
+            <td style="width:50%"><b>Postopek priprave:</b></td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <table>
+                    {% for s in recept.priprava_set.all %}
+                    <tr>
+                        <td align="right" valign="top"><nobr>{{ s.kolicina }} {{ s.mera.ime }}</nobr></td>
+                        <td align="center" valign="top">&nbsp...&nbsp</td>
+                        <td valign="top">{{ s.sestavina.ime }}&nbsp</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                
+            </td>
+            <td valign="top">
+                <div align="justify">{{ recept.postopek }}</div>
+            </td>
+        </tr>
+    </table>
 </div>
 
 {% endblock %}
