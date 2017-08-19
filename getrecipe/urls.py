@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^all/', views.all_recipes, name='all_recipes'),
     url(r'^search', views.search, name='search'),
     url(r'^publish', views.publish, name='publish'),
-    url(r'^search_recipe', views.search_recipe, name='search_recipe')
+    #url(r'^recipe_search', views.search_result_recipe, name='search_result_recipe')
 ]

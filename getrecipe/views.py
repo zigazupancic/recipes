@@ -1,13 +1,21 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from .models import Recept, Sestavina, Priprava
-from .forms import IngredientsForm, PublishRecipeForm
+from .forms import IngredientsForm, PublishRecipeForm, RecipesForm
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    recipes = get_list_or_404(Recept)
-    return render(request, 'getrecipe/index.html', {'ime': "Uporabnik", 'recepti': recipes})
+    all_recipes = get_list_or_404(Recept)
+    #return render(request, 'getrecipe/index.html', {'ime': "Uporabnik", 'recepti': recipes})
+    if request.method == 'POST':
+        form = RecipesForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['ime']
+            recipes = (Recept.objects.filter(ime__icontains=name))
+            return render(request, 'getrecipe/search_result_recipe.html', {'recepti': recipes})
+    form = RecipesForm()
+    return render(request, 'getrecipe/index.html', {'form': form, 'vsi_recepti': all_recipes})
 
 
 def detail(request, recipe_id):
@@ -19,15 +27,12 @@ def all_recipes(request):
     recipes = get_list_or_404(Recept)
     return render(request, 'getrecipe/allrecipes.html', {'recepti': recipes})
 
-def search_recipe(request):
-    # TODO
-    return render(request)
-
 def search(request):
     if request.method == 'POST':
         form = IngredientsForm(request.POST)
         if form.is_valid():
             ingredients = form.cleaned_data['sestavine']
+            print(ingredients)
             if form.cleaned_data['opcija_iskanja'] == 's_in_r':
                 # Vrne ID-je receptov, ki vsebujejo vse sestavine iz `ingredients`.
                 recipes = (Priprava.objects
@@ -35,6 +40,7 @@ def search(request):
                            .values('recept_id')
                            .annotate(sestavine_count=Count('sestavina_id'))
                            .filter(sestavine_count=len(ingredients)))
+                print(recipes)
             else:
                 # Vrne ID-je receptov, katerih vse sestavine so vsebovane v `ingredients`.
                 exclude_recipes = (Priprava.objects.exclude(sestavina_id__in=ingredients)
@@ -48,6 +54,20 @@ def search(request):
     form = IngredientsForm()
     return render(request, 'getrecipe/search.html', {'form': form})
 
+#def search_result_recipe(request):
+#    print("views search_recipe")
+#    if request.method == 'POST':
+#        form = RecipesForm(request.POST)
+#        if form.is_valid():
+#            name = form.cleaned_data['ime']
+            #recipes = (Recept.objects
+                        #.filter(ime__in=name))
+#            recipes = []
+#            print(recipes)
+#            print("views search_recipe v IF")
+#            return render(request, 'getrecipe/search_result_recipe.html', {'recepti': recipes})
+#    form = RecipesForm()
+#    return render(request, 'getrecipe/index.html', {'form': form})
 
 @login_required()
 def publish(request):

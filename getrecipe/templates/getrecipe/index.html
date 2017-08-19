@@ -11,35 +11,28 @@
 {% block content %}
 <div class="jumbotron text-center">
   <h1>Recepti</h1>
-  <p>Vpiši ime recepta, ki ga iščeš, ali pa svoje sestavine in izvedel boš, kaj lahko skuhaš.</p>
-  <form>
-    <div class="input-group">
-      <form type="get" action="{% url 'index' %}" style="margin: 0" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="text" class="form-control" size="50" placeholder="Recept ali sestavina" id="search_box" name="search_box" required>
-        <div class="input-group-btn">
-            <button id="search_submit" type="submit" style="background-color:#25b1ed" class="btn btn-danger">Išči</button>
-        </div>
-      </form>
-    </div>
+  <p>Vpiši ime recepta, ki ga iščeš, in izvedel boš, kaj lahko skuhaš.</p>
+  <form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="btn btn-danger" value="Išči" style="background-color:#25b1ed" >
   </form>
   <div>
     <br>
-    <a href="{% url 'detail' 5991 %}"><img src="{{recepti.2.povezava_do_slike_jedi}}" height=100></a>
-    <a href="{% url 'detail' 5996 %}"><img src="{{recepti.7.povezava_do_slike_jedi}}" height=100></a>
-    <a href="{% url 'detail' 5997 %}"><img src="{{recepti.8.povezava_do_slike_jedi}}" height=100></a>
-    <a href="{% url 'detail' 5998 %}"><img src="{{recepti.9.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 5991 %}"><img src="{{vsi_recepti.2.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 5996 %}"><img src="{{vsi_recepti.7.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 5997 %}"><img src="{{vsi_recepti.8.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 5998 %}"><img src="{{vsi_recepti.9.povezava_do_slike_jedi}}" height=100></a>
     <br><br>
-    <a href="{% url 'detail' 6048 %}"><img src="{{recepti.33.povezava_do_slike_jedi}}" height=100></a>
-    <a href="{% url 'detail' 6024 %}"><img src="{{recepti.38.povezava_do_slike_jedi}}" height=100></a>
-    <a href="{% url 'detail' 6036 %}"><img src="{{recepti.50.povezava_do_slike_jedi}}" height=100></a>
-    <a href="{% url 'detail' 6042 %}"><img src="{{recepti.57.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 6048 %}"><img src="{{vsi_recepti.33.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 6024 %}"><img src="{{vsi_recepti.38.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 6036 %}"><img src="{{vsi_recepti.50.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 6042 %}"><img src="{{vsi_recepti.57.povezava_do_slike_jedi}}" height=100></a>
   </div>
 </div>
 
 
-<div id="about" class="container-fluid">
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm-8">
       <h2>O STRANI</h2><br>
@@ -67,7 +60,7 @@
   </div>
 </div>
 
-<div id="about" class="container-fluid">
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm-8">
       <h2>UPORABNIK</h2><br>
