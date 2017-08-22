@@ -1,0 +1,35 @@
+{% extends "getrecipe/base.html" %}
+
+{% block title %}
+    Rezultati iskanja
+{% endblock %}
+
+<style type="text/css">
+    body { background: navy !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+{% block content %}
+    <div class="jumbotron">
+        <style>
+            a:link {
+                color: #818181;
+            }
+            a:visited {
+                color: #25b1ed;
+            }
+        </style>
+        <h1>Rezultati iskanja receptov po imenu</h1>
+        <p>Pripravimo lahko naslednje recepte:</p>
+    </div>
+    <div class="container-fluid">
+        <table>
+            {% for recept in recepti %}
+                <tr class="spaceUnder">
+                    <td><img src="{{recept.povezava_do_slike_jedi}}" width=200></td>
+                    <td><h3><a href="{% url 'detail' recept.id %}">{{ recept.ime }}</a></h3></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

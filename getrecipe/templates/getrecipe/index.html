@@ -11,39 +11,36 @@
 {% block content %}
 <div class="jumbotron text-center">
   <h1>Recepti</h1>
-  <p>Vpiši svoje sestavine in izvedel boš, kaj lahko skuhaš.</p>
-  <form>
-    <div class="input-group">
-      <input type="text" class="form-control" size="50" placeholder="Sestavine" required>
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-danger">Najdi</button>
-      </div>
-    </div>
+  <p>Vpiši ime recepta, ki ga iščeš, in izvedel boš, kaj lahko skuhaš.</p>
+  <form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="btn btn-danger" value="Išči" style="background-color:#25b1ed" >
   </form>
-</div>
-
-<div id="about" class="container-fluid">
-  <div class="row">
-    <div class="col-sm-8">
-      <h2>O STRANI</h2><br>
-      <h4>Pozdravljen na spletni strani za iskanje receptov. Vpiši sestavine, ki so ti na voljo, in izvedel boš, katere jedi lahko pripraviš iz njih. Lahko izbereš tudi tip jedi, torej glavno jed, sladice in peciva, mesne jedi,...
-      </h4><br>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-cutlery logo"></span>
-    </div>
+  <div>
+    <br>
+    <a href="{% url 'detail' 5991 %}"><img src="{{vsi_recepti.2.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 5996 %}"><img src="{{vsi_recepti.7.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 5997 %}"><img src="{{vsi_recepti.8.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 5998 %}"><img src="{{vsi_recepti.9.povezava_do_slike_jedi}}" height=100></a>
+    <br><br>
+    <a href="{% url 'detail' 6048 %}"><img src="{{vsi_recepti.33.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 6024 %}"><img src="{{vsi_recepti.38.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 6036 %}"><img src="{{vsi_recepti.50.povezava_do_slike_jedi}}" height=100></a>
+    <a href="{% url 'detail' 6042 %}"><img src="{{vsi_recepti.57.povezava_do_slike_jedi}}" height=100></a>
   </div>
 </div>
 
-<div id="about" class="container-fluid">
+
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm-8">
-      <h2>KAKO ISKATI</h2><br>
-      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h2>O STRANI</h2><br>
+      <h4 align="justify">Pozdravljen na spletni strani za iskanje receptov! Tu boš našel ogromno receptov, ki jih lahko sam pripraviš doma. Iskanje želenega recepta je zelo enostavno. Zgoraj vpiši ime recepta ali pa sestavine, ki so ti na voljo, in izvedel boš, katere jedi lahko pripraviš iz njih. Lahko pa sestavine tudi izbereš izmed velike količine ponujenih (to narediš <a href="{% url 'search' %}">tukaj</a>).
+      </h4><br>
     </div>
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-cutlery logo"></span>
+      <span><img src="../../static/getrecipe/img/homer.jpg" alt="Homer" height=200/></span>
     </div>
   </div>
 </div>
@@ -51,13 +48,27 @@
 <div class="container-fluid bg-grey">
   <div class="row">
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-apple logo slideanim"></span>
+      <span><img src="../../static/getrecipe/img/magnifying.png" alt="Magnifying glass" height=200/></span>
     </div>
     <div class="col-sm-8">
-      <h2>Our Values</h2><br>
-      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h2>KAKO ISKATI</h2><br>
+      <h4 align="justify">Na strani <a href="{% url 'search' %}">IŠČI RECEPTE</a> lahko izbereš sestavine, ki so na voljo in našel boš vse recepte, ki te sestavine vsebujejo.<br>
+      Če klikneš na <a href="{% url 'all_recipes' %}">VSI RECEPTI</a>, boš našel seznam vseh receptov na tej spletni strani. Za vsakega od njih so nato podane sestavine in postopek, kako jed pripraviti.<br>
+      Recept pa lahko tudi dodaš v <a href="{% url 'publish' %}">DODAJ RECEPT</a>, vendar moraš biti za to prijavljen (glej spodaj).
+      </h4><br>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>UPORABNIK</h2><br>
+      <h4 align="justify">Na to spletno stran se lahko tudi <a href="{% url 'register' %}">registriraš</a>, le tako se lahko nato <a href="{% url 'login' %}">prijaviš</a>, da dodaš nov recept ali oceniš že obstoječega. Na koncu se ne pozabi <a href="{% url 'logout' %}">odjaviti</a>!
+      </h4><br>
+    </div>
+    <div class="col-sm-4">
+      <span><img src="../../static/getrecipe/img/user.jpg" alt="User" height=200/></span>
     </div>
   </div>
 </div>

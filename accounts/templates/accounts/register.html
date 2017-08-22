@@ -10,28 +10,25 @@
         {{ error }}
         <form action="{% url 'register' %}" method = "POST">
             {% csrf_token %}
-
-            <p>
-                {{ form.username.label_tag }}
-                {{ form.username}}
-            </p>
-
-            <p>
-                {{ form.email.label_tag }}
-                {{ form.email }}
-            </p>
-
-            <p>
-                {{ form.password1.label_tag }}
-                {{ form.password1 }}
-            </p>
-
-            <p>
-                {{ form.password2.label_tag }}
-                {{ form.password2 }}
-            </p>
-
-            <input type = "submit" value = "register" />
+            <table>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username}}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.email.label_tag }}</td>
+                    <td>{{ form.email }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password1.label_tag }}</td>
+                    <td>{{ form.password1 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password2.label_tag }}&nbsp</td>
+                    <td>{{ form.password2 }}</td>
+                </tr>
+            </table>
+            <input type = "submit" value = "Registracija" />
         </form>
     </div>
 {% endblock %}

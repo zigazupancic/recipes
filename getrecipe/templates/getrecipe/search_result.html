@@ -12,10 +12,10 @@
     <div class="jumbotron">
         <style>
             a:link {
-                color: white;
+                color: #818181;
             }
             a:visited {
-                color: yellow;
+                color: #25b1ed;
             }
         </style>
         <h1>Rezultati iskanja receptov po sestavinah</h1>
@@ -24,17 +24,25 @@
         <ul>
             {% for sestavina in sestavine %}
             <li>
-                <i> {{sestavina.ime}},</i>
+                <i> {{sestavina.ime}}</i>
             </li>
             {% endfor %}
         </ul>
-
         <p>lahko pripravimo naslednje recepte:</p>
-        {% for recept in recepti %}
-            <h3>
-                <a href="{% url 'detail' recept.id %}">{{ recept.ime }}</a>
-            </h3>
-        {% endfor %}
     </div>
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8">
+                <table>
+                    {% for recept in recepti %}
+                        <tr class="spaceUnder">
+                            <td><img src="{{recept.povezava_do_slike_jedi}}" width=200></td>
+                            <td><h3><a href="{% url 'detail' recept.id %}">{{ recept.ime }}</a></h3></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <p> Z rezultati iskanja nisi zadovoljen? Vrni se <a href="{% url 'search' %}" style="color: #25b1ed ">nazaj</a> in poskusi z drugimi sestavinami.</p>
+    </div>
 {% endblock %}

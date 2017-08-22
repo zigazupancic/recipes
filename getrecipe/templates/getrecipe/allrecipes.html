@@ -8,29 +8,29 @@
     body { background: navy !important;} /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 </style>
 
-
-
-
 {% block content %}
 
     <div class="jumbotron">
         <style>
             a:link {
-                color: white;
+                color: #818181;
             }
             a:visited {
-                color: yellow;
+                color: #25b1ed;
             }
         </style>
         <h1>Vsi recepti</h1>
-        Tu je seznam vseh receptov, med katerimi lahko izbiraš.
+        <i>To je seznam vseh receptov, med katerimi lahko izbiraš.</i>
+    </div>
+    <div class="container-fluid">
+        <table>
         {% for recept in recepti %}
-            <h3>
-                <body link="white">
-                <a href="{% url 'detail' recept.id %}">{{ recept.ime }}</a>
-                </body>
-            </h3>
+          <tr class="spaceUnder">
+            <td ><img src="{{recept.povezava_do_slike_jedi}}" width=200></td>
+            <td><h3><a href="{% url 'detail' recept.id %}">{{ recept.ime }}</a></h3></td>
+          </tr>
         {% endfor %}
+        </table>
     </div>
 
 {% endblock %}
