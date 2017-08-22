@@ -24,7 +24,7 @@ def detail(request, recipe_id):
 
 
 def all_recipes(request):
-    recipes = get_list_or_404(Recept)
+    recipes = Recept.objects.all()[:30]
     return render(request, 'getrecipe/allrecipes.html', {'recepti': recipes})
 
 def search(request):
