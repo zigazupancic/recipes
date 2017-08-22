@@ -49,6 +49,14 @@ def search(request):
 @login_required()
 def publish(request):
     if request.method == 'POST':
-        pass
+        form = PublishRecipeForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            recept = Recept(ime=data["ime"], ocena=data["ocena"], povezava=data["povezava"],
+                            povezava_do_slike_jedi=data["povezava_do_slike_jedi"], zahtevnost=data["zahtevnost"],
+                            cas_priprave=data["cas_priprave"], postopek=data["postopek"])
+            recept.save()
+            from django.shortcuts import HttpResponse
+            return HttpResponse("PUBLISHED RECIPE")
     form = PublishRecipeForm()
     return render(request, 'getrecipe/publish.html', {'form': form})
