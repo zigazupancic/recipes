@@ -30,10 +30,13 @@
                 {% block navigation %}
                     <li><a href="{% url 'search' %}">IŠČI RECEPTE</a></li>
                     <li><a href="{% url 'all_recipes' %}">VSI RECEPTI</a></li>
+                    {% if user.is_authenticated %}
                     <li><a href="{% url 'publish' %}">DODAJ RECEPT</a></li>
-                    <li><a href="{% url 'login' %}">PRIJAVA</a></li>
                     <li><a href="{% url 'logout' %}">ODJAVA</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">PRIJAVA</a></li>
                     <li><a href="{% url 'register' %}">REGISTRACIJA</a></li>
+                    {% endif %}
                 {% endblock %}
             </ul>
         </div>
