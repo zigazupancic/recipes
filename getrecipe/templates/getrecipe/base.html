@@ -29,7 +29,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {% block navigation %}
                     <li><a href="{% url 'search' %}">IŠČI RECEPTE</a></li>
-                    <li><a href="{% url 'all_recipes' %}">VSI RECEPTI</a></li>
+                    <li><a href="{% url 'all_recipes_page' 0 %}">VSI RECEPTI</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'publish' %}">DODAJ RECEPT</a></li>
                     <li><a href="{% url 'logout' %}">ODJAVA</a></li>

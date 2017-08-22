@@ -1,0 +1,38 @@
+{% extends "getrecipe/base.html" %}
+
+{% block title %}
+    Recepti
+{% endblock %}
+
+<style type="text/css">
+    body { background: navy !important;} /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+{% block content %}
+
+    <div class="jumbotron">
+        <style>
+            a:link {
+                color: #818181;
+            }
+            a:visited {
+                color: #25b1ed;
+            }
+        </style>
+        <h1>Vsi recepti</h1>
+        <i>To je seznam vseh receptov, med katerimi lahko izbiraš. Si na strani {{now}}.</i>
+    </div>
+	<h3><center><p> Pojdi na <a href='{{previous}}'> prejšnjo </a> / <a href='{{next}}'> naslednjo </a> stran. </p></center></h3>
+    <div class="container-fluid">
+        <table>
+        {% for recept in recipes %}
+          <tr class="spaceUnder">
+            <td ><img src="{{recept.povezava_do_slike_jedi}}" width=200></td>
+            <td><h3><a href="{% url 'detail' recept.id %}">{{ recept.ime }}</a></h3></td>
+          </tr>
+        {% endfor %}
+        </table>
+	<h3><center><p> Pojdi na <a href='{{previous}}'> prejšnjo </a> / <a href='{{next}}'> naslednjo </a> stran. </p></center></h3>
+    </div>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404, HttpResponse
 from .models import Recept, Sestavina, Priprava
 from .forms import IngredientsForm, PublishRecipeForm, RecipesForm
 from django.db.models import Count
@@ -28,6 +28,26 @@ def detail(request, recipe_id):
 def all_recipes(request):
     recipes = Recept.objects.all()[:30]
     return render(request, 'getrecipe/allrecipes.html', {'recepti': recipes})
+
+def all_recipes_page(request, page_id):
+    page_id = int(page_id)
+    recipes = Recept.objects.all()
+    zacetek = page_id*30
+    konec = (page_id+1)*30
+    naslednja = page_id
+    prejsnja = 0
+    if konec < len(recipes):
+        naslednja = page_id + 1
+    if page_id > 0:
+        prejsnja = page_id - 1
+    recipes = recipes[zacetek:konec]
+    return render(request, 'getrecipe/allrecipes_page.html',
+                  {
+                    'recipes' : recipes,
+                    'next' : naslednja,
+                    'previous' : prejsnja,
+                    'now' : page_id + 1,
+                    })
 
 def search(request):
     if request.method == 'POST':
