@@ -20,7 +20,9 @@ def index(request):
 
 def detail(request, recipe_id):
     recipe = get_object_or_404(Recept, pk=recipe_id)
-    return render(request, 'getrecipe/detail.html', {'recept': recipe})
+    postopek = recipe.postopek.replace('&nbsp;',' ')
+    return render(request, 'getrecipe/detail.html', {'recept': recipe,
+                                                     'postopek': postopek})
 
 
 def all_recipes(request):
