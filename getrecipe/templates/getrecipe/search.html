@@ -6,33 +6,42 @@
 
 {% block content %}
 
-<div class="jumbotron">
-    <h1>Išči recepte</h1>
-    <form>
-        Spodaj izberi sestavine, ki so ti na voljo. Lahko izbereš samo eno ali pa se odločiš za več.
-        <br>
-        <i> Recept naj vsebuje vse iskane sestavine:</i> našel boš recepte, ki vsebujejo vse sestavine, ki si jih izbral. <br>
-        <i> Sestavine recepta naj bodo vsebovane v iskanih sestavinah:</i> našel boš recepte, ki vsebujejo vsaj eno sestavino, ne pa nujno vseh, ki si jih izbral.
-    </form>
-</div>
+    <div class="jumbotron">
+        <h1>Išči recepte</h1>
+        <form>
+            Spodaj izberi sestavine, ki so ti na voljo. Lahko izbereš samo eno ali pa se odločiš za več.
+            <br>
+            <i> Recept naj vsebuje vse iskane sestavine:</i> našel boš recepte, ki vsebujejo vse sestavine, ki si jih izbral. <br>
+            <i> Sestavine recepta naj bodo vsebovane v iskanih sestavinah:</i> našel boš recepte, ki vsebujejo vsaj eno sestavino, ne pa nujno vseh, ki si jih izbral.
+        </form>
+    </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-8">
-      <h4>
-      <form action="{% url 'search' %}" method="post">
-            {% csrf_token %}
-            {{ form }}
-            <div align="center">
-                <input type="submit" value="Išči"/>
-            </div>    
-      </form>
-      </h4>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8">
+                <h4>
+                    <form action="{% url 'search' %}" method="post">
+                        {% csrf_token %}
+                        <table class="table">
+                            <tr>
+                                <td>Sestavine: ;</td>
+                                <td>{{ form.sestavine}}</td>
+                            </tr>
+                            <tr>
+                                <td>Vrsta iskanja: </td>
+                                <td>{{ form.opcija_iskanja }}</td>
+                            </tr>
+                        </table>
+                        <div class="text-center">
+                            <button type="submit">Išči</button>
+                        </div>
+                    </form>
+                </h4>
+            </div>
+            <div class="col-sm-4">
+                <span><img src="../../static/getrecipe/img/ingredients.jpg" alt="Ingredients" height=200/></span>
+            </div>
+        </div>
     </div>
-    <div class="col-sm-4">
-      <span><img src="../../static/getrecipe/img/ingredients.jpg" alt="Ingredients" height=200/></span>
-    </div>
-  </div>
-</div>
 
 {% endblock %}
