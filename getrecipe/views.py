@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, get_list_or_404, HttpResponse
+from django.shortcuts import render, get_object_or_404, get_list_or_404, HttpResponse, redirect
 from .models import Recept, Sestavina, Priprava
 from .forms import IngredientsForm, PublishRecipeForm, RecipesForm
 from django.db.models import Count
@@ -30,10 +30,15 @@ def all_recipes(request):
     return render(request, 'getrecipe/allrecipes.html', {'recepti': recipes})
 
 def all_recipes_page(request, page_id):
-    page_id = int(page_id)
+    page_id = int(page_id)    
     recipes = Recept.objects.all()
+    
     zacetek = page_id*30
     konec = (page_id+1)*30
+
+    if zacetek > len(recipes):
+        return redirect('all_recipes_page', page_id = len(recipes)//30)
+    
     naslednja = page_id
     prejsnja = 0
     if konec < len(recipes):
@@ -41,6 +46,7 @@ def all_recipes_page(request, page_id):
     if page_id > 0:
         prejsnja = page_id - 1
     recipes = recipes[zacetek:konec]
+    
     return render(request, 'getrecipe/allrecipes_page.html',
                   {
                     'recipes' : recipes,
