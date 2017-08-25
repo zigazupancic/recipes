@@ -108,6 +108,10 @@ def publish(request):
                             cas_priprave=data["cas_priprave"], postopek=data["postopek"])
             recept.save()
             from django.shortcuts import HttpResponse
-            return HttpResponse("PUBLISHED RECIPE")
+            return render(request, 'getrecipe/allrecipes_page.html',
+                          {'info': 'Recept uspešno dodan!', 'now': 0})
+        else:
+            return render(request, 'getrecipe/publish.html',
+                          {'info': 'Napaka! Poskusite znova.'})
     form = PublishRecipeForm()
     return render(request, 'getrecipe/publish.html', {'form': form})

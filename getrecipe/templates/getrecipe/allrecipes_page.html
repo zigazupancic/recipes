@@ -11,6 +11,11 @@
 {% block content %}
 
     <div class="jumbotron">
+        {% if info %}
+    <div class="alert alert-info">
+        {{ info }}
+    </div>
+    {% endif %}
         <style>
             a:link {
                 color: #818181;
